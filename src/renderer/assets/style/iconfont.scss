@@ -1,0 +1,34 @@
+@font-face {
+  font-family: 'iconfont';
+  src: url('../icon/iconfont.eot?t=1578447241982'); /* IE9 */
+  src: url('../icon/iconfont.eot?t=1578447241982#iefix')
+      format('embedded-opentype'),
+    /* IE6-IE8 */ url('../icon/iconfont.woff?t=1578447241982') format('woff'),
+    url('../icon/iconfont.ttf?t=1578447241982') format('truetype'),
+    /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+      url('../icon/iconfont.svg?t=1578447241982#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: 'iconfont' !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconmusic:before {
+  content: '\e8f0';
+}
+
+.iconstop:before {
+  content: '\e835';
+}
+
+.iconplay:before {
+  content: '\e6b0';
+}
+
+.iconplay1:before {
+  content: '\e65c';
+}

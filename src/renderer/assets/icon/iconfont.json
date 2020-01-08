@@ -1,0 +1,37 @@
+{
+  "id": "1594571",
+  "name": "lucky-draw",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "129318",
+      "name": "music",
+      "font_class": "music",
+      "unicode": "e8f0",
+      "unicode_decimal": 59632
+    },
+    {
+      "icon_id": "929845",
+      "name": "stop",
+      "font_class": "stop",
+      "unicode": "e835",
+      "unicode_decimal": 59445
+    },
+    {
+      "icon_id": "1226382",
+      "name": "play",
+      "font_class": "play",
+      "unicode": "e6b0",
+      "unicode_decimal": 59056
+    },
+    {
+      "icon_id": "1433820",
+      "name": "play",
+      "font_class": "play1",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    }
+  ]
+}
