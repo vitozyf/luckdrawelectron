@@ -30,7 +30,8 @@ const winURL =
 
 function createWindow() {
   if (process.env.NODE_ENV === 'production') {
-    autoUpdater.checkForUpdates()
+    // autoUpdater.checkForUpdates()
+    autoUpdater.checkForUpdatesAndNotify()
   }
   /**
    * Initial window options
