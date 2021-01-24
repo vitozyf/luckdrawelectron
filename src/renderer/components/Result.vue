@@ -37,7 +37,11 @@
           :key="j"
           :data-res="data"
         >
-          {{ data }}
+          {{
+            list.find(a => a.key === data)
+              ? list.find(a => a.key === data).name
+              : data
+          }}
         </span>
       </span>
     </div>
@@ -58,6 +62,9 @@ export default {
       set(val) {
         this.$store.commit('setResult', val)
       }
+    },
+    list() {
+      return this.$store.state.list
     },
     resultList() {
       const list = []

@@ -140,6 +140,8 @@ export default {
       }
       this.$store.commit('setNewLottery', data)
 
+      setData(this.newLottery.name, [])
+
       this.showAddLottery = false
     }
   }

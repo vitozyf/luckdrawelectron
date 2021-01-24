@@ -20,7 +20,11 @@
     >
       <el-form ref="form" :model="form" label-width="80px" size="mini">
         <el-form-item label="抽取奖项">
-          <el-select v-model="form.category" placeholder="请选取本次抽取的奖项">
+          <el-select
+            v-if="categorys.length > 0"
+            v-model="form.category"
+            placeholder="请选取本次抽取的奖项"
+          >
             <el-option
               :label="item.label"
               :value="item.value"

@@ -30,19 +30,27 @@ export default {
     result() {
       return this.$store.state.result
     },
+    list() {
+      return this.$store.state.list
+    },
     message() {
-      const { result, config } = this
+      const { result, config, list } = this
       const fields = Object.keys(config)
 
       let message = [{ key: 0, title: config.name }]
       fields.forEach((item, index) => {
         let label = conversionCategoryName(item)
         if (result[item] && config[item] > 0) {
+          const resultNameRes = JSON.parse(JSON.stringify(result[item]))
+          resultNameRes.forEach((reitem, reindex) => {
+            const listItem = list.find(a => a.key === reitem)
+            resultNameRes[reindex] = listItem.name
+          })
           message.push({
             key: index + 1,
             title: `${label}抽奖结果:`,
             value: `${
-              result[item].length > 0 ? result[item].join('、') : '暂未抽取'
+              resultNameRes.length > 0 ? resultNameRes.join('、') : '暂未抽取'
             }`
           })
         }

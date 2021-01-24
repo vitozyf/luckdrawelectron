@@ -117,6 +117,7 @@ import Tool from '@/components/Tool'
 import bgaudio from '@/assets/bg.mp3'
 import beginaudio from '@/assets/begin.mp3'
 import {
+  setData,
   getData,
   configField,
   resultField,
@@ -173,9 +174,14 @@ export default {
     },
     datas() {
       const { number } = this.config
-      const nums = number >= 1500 ? 500 : this.config.number
+      // const nums = number >= 1500 ? 500 : this.config.number
       const configNum = number > 1500 ? Math.floor(number / 3) : number
-      const randomShowNums = luckydrawHandler(configNum, [], nums)
+      // const randomShowNums = luckydrawHandler(configNum, [], nums)
+
+      const randomShowNums = []
+      for (let i = 0; i < configNum; i++) {
+        randomShowNums.push(i + 1)
+      }
       const randomShowDatas = randomShowNums.map(item => {
         const listData = this.list.find(d => d.key === item)
         const photo = this.photos.find(d => d.id === item)
@@ -250,6 +256,10 @@ export default {
       this.getPhoto()
     }, 1000)
     window.addEventListener('resize', this.reportWindowSize)
+
+    if (!getData('exclude')) {
+      setData('exclude', [])
+    }
   },
   methods: {
     playHandler() {
@@ -337,14 +347,16 @@ export default {
         } else if (mode === 99) {
           num = qty
         }
+        this.category = category
+        const tmpExclude = getData(this.categoryName) || []
         const resArr = luckydrawHandler(
           number,
           allin ? [] : this.allresult,
-          num
+          num,
+          tmpExclude
         )
         this.resArr = resArr
 
-        this.category = category
         if (!this.result[category]) {
           this.$set(this.result, category, [])
         }

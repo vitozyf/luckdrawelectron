@@ -1,3 +1,6 @@
+import {
+  getData
+} from '@/helper/index'
 export function generateArray(start, end) {
   return Array.from(new Array(end + 1).keys()).slice(start)
 }
@@ -16,12 +19,13 @@ export function randomNum(minNum = 1, maxNum) {
  * @param {array} won 已中奖
  * @param {number} num 本次抽取人数
  */
-export function luckydrawHandler(total, won = [], num) {
+export function luckydrawHandler(total, won = [], num, tmpExclude = []) {
   const peolist = generateArray(1, Number(total))
   const wons = won
   const res = []
+  const exclude = getData('exclude') || []
   for (let j = 0; j < num; j++) {
-    const nodraws = peolist.filter(item => !wons.includes(item))
+    const nodraws = peolist.filter(item => !wons.concat(exclude).concat(tmpExclude).includes(item))
     const current = nodraws[randomNum(1, nodraws.length) - 1]
     res.push(current)
     wons.push(current)
