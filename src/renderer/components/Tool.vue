@@ -137,7 +137,7 @@ import {
   configField,
   listField,
   resultField,
-  conversionCategoryName
+  conversionCategoryName,
 } from '@/helper/index'
 import Importphoto from './Importphoto'
 import { database, DB_STORE_NAME } from '@/helper/db'
@@ -145,13 +145,13 @@ import { database, DB_STORE_NAME } from '@/helper/db'
 export default {
   props: {
     running: Boolean,
-    closeRes: Function
+    closeRes: Function,
   },
   computed: {
     config: {
       get() {
         return this.$store.state.config
-      }
+      },
     },
     remain() {
       return (
@@ -174,13 +174,13 @@ export default {
             name &&
               options.push({
                 label: name,
-                value: key
+                value: key,
               })
           }
         }
       }
       return options
-    }
+    },
   },
   components: { Importphoto },
   data() {
@@ -194,9 +194,9 @@ export default {
         category: '',
         mode: 1,
         qty: 1,
-        allin: false
+        allin: false,
       },
-      listStr: ''
+      listStr: '',
     }
   },
   watch: {
@@ -204,7 +204,7 @@ export default {
       if (!v) {
         this.removeInfo.type = 0
       }
-    }
+    },
   },
   methods: {
     resetConfig() {
@@ -212,7 +212,7 @@ export default {
       this.$confirm('此操作将重置所选数据，是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning'
+        type: 'warning',
       })
         .then(() => {
           switch (type) {
@@ -246,7 +246,7 @@ export default {
           this.showRemoveoptions = false
           this.$message({
             type: 'success',
-            message: '重置成功!'
+            message: '重置成功!',
           })
 
           this.$nextTick(() => {
@@ -256,7 +256,7 @@ export default {
         .catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消'
+            message: '已取消',
           })
         })
     },
@@ -300,7 +300,7 @@ export default {
       const list = []
       const rows = listStr.split('\n')
       if (rows && rows.length > 0) {
-        rows.forEach(item => {
+        rows.forEach((item) => {
           const rowList = item.split(/\t|\s/)
           if (rowList.length >= 2) {
             const key = Number(rowList[0].trim())
@@ -308,7 +308,7 @@ export default {
             key &&
               list.push({
                 key,
-                name
+                name,
               })
           }
         })
@@ -317,14 +317,14 @@ export default {
 
       this.$message({
         message: '保存成功',
-        type: 'success'
+        type: 'success',
       })
       this.showImport = false
       this.$nextTick(() => {
         this.$emit('resetConfig')
       })
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="scss">
