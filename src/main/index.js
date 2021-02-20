@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, Menu, MenuItem } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
 
@@ -41,8 +41,8 @@ function createWindow() {
     useContentSize: true,
     width: 1000,
     webPreferences: {
-      nodeIntegration: true
-    }
+      nodeIntegration: true,
+    },
   })
 
   mainWindow.loadURL(winURL)
@@ -51,7 +51,24 @@ function createWindow() {
     mainWindow = null
   })
 
-  mainWindow.webContents.openDevTools()
+  const menu = new Menu()
+  menu.append(
+    new MenuItem({
+      label: 'Electron',
+      submenu: [
+        {
+          role: 'help',
+          accelerator:
+            process.platform === 'darwin' ? 'Alt+Cmd+I' : 'Alt+Shift+I',
+          click: () => {
+            mainWindow.webContents.openDevTools()
+          },
+        },
+      ],
+    })
+  )
+
+  Menu.setApplicationMenu(menu)
 }
 
 app.on('ready', createWindow)

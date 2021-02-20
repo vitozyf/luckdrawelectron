@@ -2,15 +2,15 @@ module.exports = {
   root: true,
   parser: 'babel-eslint',
   parserOptions: {
-    sourceType: 'module'
+    sourceType: 'module',
   },
   env: {
     browser: true,
-    node: true
+    node: true,
   },
   extends: 'standard',
   globals: {
-    __static: true
+    __static: true,
   },
   plugins: ['html'],
   rules: {
@@ -20,6 +20,7 @@ module.exports = {
     'generator-star-spacing': 0,
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-    'space-before-function-paren': 0
-  }
+    'space-before-function-paren': 0,
+    'comma-dangle': ['error', 'always-multiline'],
+  },
 }

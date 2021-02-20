@@ -19,7 +19,7 @@
       :key="index"
       class="listrow"
       @click="
-        event => {
+        (event) => {
           deleteRes(event, item)
         }
       "
@@ -38,8 +38,8 @@
           :data-res="data"
         >
           {{
-            list.find(a => a.key === data)
-              ? list.find(a => a.key === data).name
+            list.find((a) => a.key === data)
+              ? list.find((a) => a.key === data).name
               : data
           }}
         </span>
@@ -52,7 +52,7 @@ import { conversionCategoryName, getDomData } from '@/helper/index'
 export default {
   name: 'c-Result',
   props: {
-    visible: Boolean
+    visible: Boolean,
   },
   computed: {
     result: {
@@ -61,7 +61,7 @@ export default {
       },
       set(val) {
         this.$store.commit('setResult', val)
-      }
+      },
     },
     list() {
       return this.$store.state.list
@@ -75,12 +75,12 @@ export default {
           list.push({
             label: key,
             name,
-            value: element
+            value: element,
           })
         }
       }
       return list
-    }
+    },
   },
   methods: {
     deleteRes(event, row) {
@@ -91,29 +91,29 @@ export default {
       this.$confirm('此操作将移除该中奖号码，确认删除?', '警告', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning'
+        type: 'warning',
       })
         .then(() => {
           if (Index) {
             const result = this.result
             result[row.label] = this.result[row.label].filter(
-              item => item !== Number(Index)
+              (item) => item !== Number(Index)
             )
             this.result = result
             this.$message({
               type: 'success',
-              message: '删除成功!'
+              message: '删除成功!',
             })
           }
         })
         .catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消'
+            message: '已取消',
           })
         })
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="scss">

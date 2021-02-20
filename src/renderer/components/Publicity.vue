@@ -43,7 +43,7 @@ export default {
         if (result[item] && config[item] > 0) {
           const resultNameRes = JSON.parse(JSON.stringify(result[item]))
           resultNameRes.forEach((reitem, reindex) => {
-            const listItem = list.find(a => a.key === reitem)
+            const listItem = list.find((a) => a.key === reitem)
             resultNameRes[reindex] = listItem.name
           })
           message.push({
@@ -51,14 +51,14 @@ export default {
             title: `${label}抽奖结果:`,
             value: `${
               resultNameRes.length > 0 ? resultNameRes.join('、') : '暂未抽取'
-            }`
+            }`,
           })
         }
       })
 
       return message
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="scss">
